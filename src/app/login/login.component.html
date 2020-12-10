@@ -1,0 +1,47 @@
+<div
+  class="container"
+  [formGroup]="loginForm">
+
+  <div class="login-form">
+    <!-- Username -->
+    <mat-form-field
+      class="maximize"
+      appearance="outline">
+      <mat-label>Nombre de usuario</mat-label>
+      <input
+        matInput
+        placeholder="your user name"
+        formControlName="userName"
+        [ngClass]="{ 'is-invalid': submitted && userName.errors }" />
+      <mat-icon matSuffix>user</mat-icon>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field
+      class="maximize"
+      appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        formControlName="password"
+        [ngClass]="{ 'is-invalid': submitted && password.errors }" />
+      <mat-icon matSuffix>password</mat-icon>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div class="btns-area">
+    <!-- LOGIN button -->
+    <button
+      mat-flat-button
+      (click)="doLogin()">
+      Login
+    </button>
+    <div *ngIf="errorMsg" class="login-error">{{errorMsg}}</div>
+  </div>
+
+</div>
