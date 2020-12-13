@@ -14,8 +14,9 @@
 
 .body-image {
   height: 100%;
-  background-image: url($images_path + '/main02_1920x1080.jpg');
-  // background-image: url(../assets/files/main01.jpg);
+  /* background-image: url($images_path + '/main02_1920x1080.jpg'); */
+  /* background-image: url(../assets/files/main01.jpg); */
+  background-color: black;
   background-size: cover;
   background-position: bottom;
 }

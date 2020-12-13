@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainLoginComponent } from './login/main-login.component';
 // Services
+import { AuxiliarTablesService } from './shared/auxiliar-tables.service';
 import { interceptorProviders } from './core/interceptors/interceptors';
 
 @NgModule({
@@ -55,6 +56,7 @@ import { interceptorProviders } from './core/interceptors/interceptors';
     MatToolbarModule
   ],
   providers: [
+    AuxiliarTablesService,
     // Interceptors
     interceptorProviders
   ],

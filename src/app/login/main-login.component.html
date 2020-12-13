@@ -1,4 +1,6 @@
-<div class="body-image">
+<div class="body-image"
+  [style.background-image]="backgroundImage"
+  >
   <div class="container">
 
     <header class="header">
@@ -27,7 +29,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="copyright-foto">Photo by John Rocha from Pexels</div>
+      <div class="copyright-foto">{{copyrightPhoto}}</div>
       <div class="copyright-text">2021 copyright - All rights reserved</div>
     </footer>
 
