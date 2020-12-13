@@ -7,15 +7,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { NavigComponent } from './navig.component';
+import { HomePageComponent } from './home-page.component';
 
-describe('NavigComponent', () => {
-  let component: NavigComponent;
-  let fixture: ComponentFixture<NavigComponent>;
+describe('HomePageComponent', () => {
+  let component: HomePageComponent;
+  let fixture: ComponentFixture<HomePageComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigComponent],
+      declarations: [HomePageComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -29,7 +29,7 @@ describe('NavigComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigComponent);
+    fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

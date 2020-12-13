@@ -6,6 +6,18 @@
   padding: 1em 2em;
 }
 
+.login-component {
+  /* display: none; */
+  width: 100%;
+  background-color: rgb(222, 72, 65, 0.25);
+  border: 1px solid rgb(222, 72, 65);
+  border-radius: 4px;
+}
+
 .maximize {
   width: 100%;
+}
+
+button + button {
+  margin-left: 1em;
 }

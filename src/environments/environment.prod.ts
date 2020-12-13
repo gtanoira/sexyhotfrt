@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  globosatBackend: 'http://admapps02:4700'
 };

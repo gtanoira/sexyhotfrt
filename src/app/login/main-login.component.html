@@ -1,0 +1,35 @@
+<div class="body-image">
+  <div class="container">
+
+    <header class="header">
+      <!-- LOGO -->
+      <div class="logo">
+        <img src="assets/images/sexyhot_logo.svg">
+      </div>
+
+      <!-- Login section -->
+      <section class="login-section">
+
+        <!-- Login button -->
+        <div class="card-container">
+          <!-- LogIn -->
+          <a class="card" (click)="goLogin()">
+            <span>Log In</span>
+          </a>
+        </div>
+
+        <!-- Login component -->
+        <ng-container class="login_component" *ngIf="activateLogin">
+          <app-login [@fade]></app-login>
+        </ng-container>
+      </section>
+    </header>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="copyright-foto">Photo by John Rocha from Pexels</div>
+      <div class="copyright-text">2021 copyright - All rights reserved</div>
+    </footer>
+
+  </div>
+</div>
