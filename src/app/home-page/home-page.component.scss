@@ -1,17 +1,42 @@
+@import "src/variables.scss";
+
+/**
+* LAYOUT
+*/
+.container {
+  height: 100%;
+  background-color: #eee;
+}
+
 .sidenav-container {
   height: 100%;
 }
 
 .sidenav {
   width: 200px;
+  background: linear-gradient(rgba(222, 72, 65,.5), rgba(222, 72, 65,.5)), url($images_path + '/sidenav01.jpg');
+  border: 1px solid rgb(222, 72, 65);
+  background-size: cover;
+  background-position: center;
+
+  &--img {
+    margin: 1em 0.5em;
+  }
 }
 
 .sidenav .mat-toolbar {
   background: inherit;
 }
 
+.content {
+  background-color: #eee;
+
+  &--toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
 .mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
 }

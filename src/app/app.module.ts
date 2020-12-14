@@ -27,6 +27,7 @@ import { MainLoginComponent } from './login/main-login.component';
 // Services
 import { AuxiliarTablesService } from './shared/auxiliar-tables.service';
 import { interceptorProviders } from './core/interceptors/interceptors';
+import { MessagesService } from './core/messages.service';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { interceptorProviders } from './core/interceptors/interceptors';
   ],
   providers: [
     AuxiliarTablesService,
+    MessagesService,
     // Interceptors
     interceptorProviders
   ],
