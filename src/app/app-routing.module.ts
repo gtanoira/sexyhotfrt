@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Components
-import { HomePageComponent } from './home-page/home-page.component';
 import { MainLoginComponent } from './login/main-login.component';
 
 const routes: Routes = [
@@ -9,9 +8,7 @@ const routes: Routes = [
   // Home Page: main menu
   {
     path: 'home',
-    component: HomePageComponent,
-    //canActivate: [AuthGuardService],
-    pathMatch: 'full'
+    loadChildren: () => import('./home-page/home-page.module').then(m => m.HomePageModule)
   },
 
   // Main Login: login page
@@ -25,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

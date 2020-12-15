@@ -9,33 +9,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
+// Modules
+import { CoreModule } from './core/core.module';
 // Components
 import { AppComponent } from './app.component';
-import { ErrorMessagesComponent } from './core/error-messages/error-messages.component';
 import { LoginComponent } from './login/login.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { MainLoginComponent } from './login/main-login.component';
 // Services
-import { AuxiliarTablesService } from './shared/auxiliar-tables.service';
 import { interceptorProviders } from './core/interceptors/interceptors';
-import { MessagesService } from './core/messages.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorMessagesComponent,
-    HomePageComponent,
     LoginComponent,
     MainLoginComponent
   ],
@@ -44,25 +35,21 @@ import { MessagesService } from './core/messages.service';
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    CoreModule,
     HttpClientModule,
     LayoutModule,
     ReactiveFormsModule,
+    // Modules
+    CoreModule,
     // Angular Material
     MatButtonModule,
     MatCardModule,
-    MatDividerModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatToolbarModule
+    MatInputModule
   ],
   providers: [
-    AuxiliarTablesService,
-    MessagesService,
     // Interceptors
     interceptorProviders
   ],

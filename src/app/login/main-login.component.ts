@@ -21,6 +21,7 @@ interface BackgroundImage {
 export class MainLoginComponent implements AfterViewInit {
 
   // Variables
+  public activateLogin = false;  // [y,n] show the login component. Is activated with the login button
   public backgroundImage = '';
   public backgroundImages: Observable<BackgroundImage[]>;
   public copyrightPhoto = '';
@@ -31,7 +32,7 @@ export class MainLoginComponent implements AfterViewInit {
   ) {
     // Read array of background images
     this.backgroundImages = this.auxiliarTablesService.getTableFromJson('main-login.json')
-    .pipe(map( data => <BackgroundImage[]>data));
+    .pipe(map( data => data as BackgroundImage[]));
   }
 
   ngAfterViewInit(): void {
@@ -44,11 +45,8 @@ export class MainLoginComponent implements AfterViewInit {
     });
   }
 
-  // Variables
-  public activateLogin = false;  // [y,n] show the login component. Is activated with the login button
-
   // Activate Login Component
-  public goLogin() {
+  public goLogin(): void {
     this.activateLogin = !this.activateLogin;
   }
 }
