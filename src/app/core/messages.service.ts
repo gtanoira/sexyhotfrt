@@ -6,10 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 export class MessagesService {
 
   // Error messages
+  // tslint:disable-next-line: variable-name
   private _errorMessageSubject = new BehaviorSubject('');
   public errorMessage = this._errorMessageSubject.asObservable();
 
   // Program Title
+  // tslint:disable-next-line: variable-name
   private _programTitleSubject = new BehaviorSubject('');
   public programTitle = this._programTitleSubject.asObservable();
 

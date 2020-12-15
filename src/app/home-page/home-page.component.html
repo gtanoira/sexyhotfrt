@@ -1,17 +1,25 @@
 <!-- SIDEBAR MAIN MENU -->
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer class="sexyhot-dark-theme sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+      [opened]="(isHandset$ | async) === false"
+    >
+    <!-- logo -->
     <img class="sidenav--img" src="assets/images/sexyhot_logo.svg">
-    <mat-toolbar>Menu</mat-toolbar>
+    <!-- user -->
+    <mat-divider></mat-divider>
+    <mat-toolbar class="menu">{{currentUser.userName}}</mat-toolbar>
+    <mat-divider></mat-divider>
+    <!-- menu options -->
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item>Grid imports</a>
+      <a mat-list-item href="#">Photo uploads</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
+
+  <!-- HTML BODY -->
   <mat-sidenav-content class="content">
     <mat-toolbar color="content--toolbar">
       <button
@@ -24,7 +32,11 @@
       </button>
       <span>{{programTitle}}</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <!-- Error Messages section -->
+    <app-error-messages class="content--error"></app-error-messages>
+
+    <!-- Content for All Programs -->
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 

@@ -5,8 +5,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MainLoginComponent } from './login/main-login.component';
 
 const routes: Routes = [
+
   // Home Page: main menu
-  { path: 'home', component: HomePageComponent, pathMatch: 'full' },
+  {
+    path: 'home',
+    component: HomePageComponent,
+    //canActivate: [AuthGuardService],
+    pathMatch: 'full'
+  },
 
   // Main Login: login page
   { path: '', component: MainLoginComponent },

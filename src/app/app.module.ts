@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
+import { ErrorMessagesComponent } from './core/error-messages/error-messages.component';
 import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainLoginComponent } from './login/main-login.component';
@@ -32,6 +34,7 @@ import { MessagesService } from './core/messages.service';
 @NgModule({
   declarations: [
     AppComponent,
+    ErrorMessagesComponent,
     HomePageComponent,
     LoginComponent,
     MainLoginComponent
@@ -47,6 +50,7 @@ import { MessagesService } from './core/messages.service';
     // Angular Material
     MatButtonModule,
     MatCardModule,
+    MatDividerModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,

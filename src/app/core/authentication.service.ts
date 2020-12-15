@@ -64,7 +64,7 @@ export class AuthenticationService {
     );
   }
 
-  public logout() {
+  public logout(): void {
     // Remover los datos del usuario del sessionStorage
     sessionStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);

@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+// Models
+import { User } from '../models/user.model';
 // Services
+import { AuthenticationService } from '../core/authentication.service';
 import { MessagesService } from '../core/messages.service';
 
 @Component({
@@ -10,10 +13,12 @@ import { MessagesService } from '../core/messages.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Variables
-  public programTitle = '';
+  public currentUser: User;
+  public programTitle = 'hhhhh';
+  private prueba1 = false;
 
   // Subscriptions
   private currentProgram: Subscription;  // to obtain the title of the program currently running
@@ -25,6 +30,7 @@ export class HomePageComponent {
     );
 
   constructor(
+    private authenticationService: AuthenticationService,
     private breakpointObserver: BreakpointObserver,
     private messagesService: MessagesService
   ) {
@@ -34,12 +40,26 @@ export class HomePageComponent {
     );
   }
 
-  ngAfterViewInit() {
+  ngOnInit(): void {
+    // Get the user info
+    this.currentUser = this.authenticationService.currentUser;
+  }
+
+  ngAfterViewInit(): void {
     this.programTitle = '';
   }
 
   ngOnDestroy(): void {
     this.currentProgram.unsubscribe();
+  }
+
+  public prueba(): void {
+    if (this.prueba1) {
+      this.messagesService.changeErrorMessage('');
+    } else {
+      this.messagesService.changeErrorMessage('GS-010(E): server is not responding');
+    }
+    this.prueba1 = !this.prueba1;
   }
 
 }

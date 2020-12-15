@@ -1,0 +1,33 @@
+
+.error-message {
+  width: 350px;
+  height: 120px;
+  padding: 0.5em 1em;
+  opacity: 0;
+  z-index: 99;
+  /* display: none; */
+  color: white;
+  font-weight: 700;
+  background-color:rgba(222, 72, 65,.75);
+  border: 1px solid rgb(222, 72, 65);
+  border-radius: 8px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn-close {
+  align-self: flex-end;
+  margin: 0 0 0 auto;
+  cursor: pointer;
+  padding: 0.15em 1em;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: rgba(222, 72, 65,.25)
+  }
+}
+

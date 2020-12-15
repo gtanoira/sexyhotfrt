@@ -4,7 +4,8 @@ export function fade() {
   return trigger('fade', [
     state('void', style({ opacity: 0 })),
     transition(':enter, :leave', [
-      animate('160ms')
+      animate('500ms')
+      //animate('160ms')
     ])
   ]);
 }
