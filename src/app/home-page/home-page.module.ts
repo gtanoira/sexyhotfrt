@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // Angular Material
 import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,13 +19,16 @@ import { HomePageComponent } from './home-page.component';
     HomePageComponent
   ],
   imports: [
+    // Angular
     CommonModule,
-    HomePageRoutingModule,
     // Angular Material
     MatDividerModule,
+    MatIconModule,
     MatListModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    // Routes
+    HomePageRoutingModule
   ],
   providers: []
 })

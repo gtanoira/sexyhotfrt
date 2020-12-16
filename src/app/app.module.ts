@@ -31,11 +31,12 @@ import { interceptorProviders } from './core/interceptors/interceptors';
     MainLoginComponent
   ],
   imports: [
+    // Routes
     AppRoutingModule,
+    // Angular
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
-    CoreModule,
     HttpClientModule,
     LayoutModule,
     ReactiveFormsModule,

@@ -13,8 +13,8 @@
     <mat-divider></mat-divider>
     <!-- menu options -->
     <mat-nav-list>
-      <a mat-list-item routerLink="/grids">Grid imports</a>
-      <a mat-list-item  routerLink="/photos/upload">Photo uploads</a>
+      <a mat-list-item routerLink="/home/grids" routerLinkActive="active-link">Grid imports</a>
+      <a mat-list-item  routerLink="/photos/upload" routerLinkActive="active-link">Photo uploads</a>
       <a mat-list-item (click)="prueba()">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -36,7 +36,7 @@
     <app-error-messages class="content--error"></app-error-messages>
 
     <!-- Content for All Programs -->
-    <router-outlet name="home-page"></router-outlet>
+    <router-outlet></router-outlet>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

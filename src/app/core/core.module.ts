@@ -35,8 +35,8 @@ export const MY_FORMATS = {
 
 // Services
 import { AuthenticationService } from './authentication.service';
+import { AuthGuardService } from './auth-guard.service';
 import { AuxiliarTablesService } from '../shared/auxiliar-tables.service';
-import { ErrorMessageService } from './error-message.service';
 import { MessagesService } from './messages.service';
 
 @NgModule({
@@ -46,8 +46,8 @@ import { MessagesService } from './messages.service';
   ],
   providers: [
     AuthenticationService,
+    AuthGuardService,
     AuxiliarTablesService,
-    ErrorMessageService,
     MessagesService,
     // Interceptors
     interceptorProviders,

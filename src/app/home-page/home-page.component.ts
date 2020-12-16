@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
 // Services
 import { AuthenticationService } from '../core/authentication.service';
 import { MessagesService } from '../core/messages.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -30,6 +31,8 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
     );
 
   constructor(
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private breakpointObserver: BreakpointObserver,
     private messagesService: MessagesService
@@ -54,12 +57,12 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public prueba(): void {
-    if (this.prueba1) {
-      this.messagesService.changeErrorMessage('');
-    } else {
-      this.messagesService.changeErrorMessage('GS-010(E): server is not responding');
-    }
-    this.prueba1 = !this.prueba1;
+    this.router.navigate(
+      [
+        { outlets: { homePage: ['grids'] } }
+      ],
+      { relativeTo: this.route.parent }
+    );
   }
 
 }
