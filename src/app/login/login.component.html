@@ -8,34 +8,36 @@
     <mat-form-field
       class="maximize"
       appearance="outline">
-      <mat-label>User name</mat-label>
+      <mat-label i18n="Login Form|User name Label@@userName">User name</mat-label>
       <input
         matInput
+        i18n-placeholder
         placeholder="your user name"
         formControlName="userName" />
       <mat-icon matSuffix>face</mat-icon>
-      <mat-error>This field is required</mat-error>
+      <mat-error i18n="Login Form|Error message for username">This field is required</mat-error>
     </mat-form-field>
 
     <!-- Password -->
     <mat-form-field
       class="maximize"
       appearance="outline">
-      <mat-label>Password</mat-label>
+      <mat-label i18n="Login Form|Password Label@@password">Password</mat-label>
       <input
         matInput
         type="password"
+        i18n-placeholder
         placeholder="password"
         formControlName="password" />
       <mat-icon matSuffix>vpn_key</mat-icon>
-      <mat-error>This field is required</mat-error>
+      <mat-error i18n="Login Form|Error message for password">This field is required</mat-error>
     </mat-form-field>
 
   </div>
 
   <div class="btns-area">
     <!-- LOGIN button -->
-    <button mat-stroked-button (click)="doLogin()">
+    <button mat-stroked-button (click)="doLogin()" i18n>
       Login
     </button>
     <div class="error-msg">{{errorMsg}}</div>

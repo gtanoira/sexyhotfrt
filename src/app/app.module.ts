@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
+// i18n
+import { TranslateModule } from '@ngx-translate/core';
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -48,7 +50,9 @@ import { interceptorProviders } from './core/interceptors/interceptors';
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    // i18n
+    TranslateModule.forRoot()
   ],
   providers: [
     // Interceptors

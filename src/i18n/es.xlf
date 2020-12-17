@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="userName" datatype="html">
+        <source>User name</source>
+        <target>Nombre Usuario</target>
+        <context-group purpose="location">
+          <context context-type="targetfile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">User name Label</note>
+        <note priority="1" from="meaning">Login Form</note>
+      </trans-unit>
+      <trans-unit id="3a2246ef82e62febda695dbcefb38b7b4a792f77" datatype="html">
+        <source>your user name</source>
+        <target>Tu nombre de usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fb95a846b6c8f9492832ee3fbabf4d8e71e07dd3" datatype="html">
+        <source>This field is required</source>
+        <target>Este campo es obligatorio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Error message for username</note>
+        <note priority="1" from="meaning">Login Form</note>
+      </trans-unit>
+      <trans-unit id="password" datatype="html">
+        <source>Password</source>
+        <target>Contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">Password Label</note>
+        <note priority="1" from="meaning">Login Form</note>
+      </trans-unit>
+      <trans-unit id="d8b81951d25439864e92f750f7c99d7426d6517c" datatype="html">
+        <source>password</source>
+        <target>contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3472e07c2c71430fca2252e24011ba52e7425203" datatype="html">
+        <source> Login </source>
+        <target> Iniciar Sesión </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="LogIn" datatype="html">
+        <source>Log In</source>
+        <target>Iniciar Sesión</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/main-login.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Log In</note>
+        <note priority="1" from="meaning">Main Page Header</note>
+      </trans-unit>
+      <trans-unit id="FooterCopyright" datatype="html">
+        <source>2021 copyright - All rights reserved</source>
+        <target>Copyright 2021 - Todos los derechos reservados</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/main-login.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Copyright text</note>
+        <note priority="1" from="meaning">Main Page Footer</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

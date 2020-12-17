@@ -13,6 +13,14 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "en": "src/i18n/en.xlf",
+          "es": "src/i18n/es.xlf",
+          "pt": "src/i18n/pt.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -22,6 +30,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "localize": true,
+            "i18nMissingTranslation": "error",
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -41,6 +51,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "localize": ["en"],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -60,6 +71,12 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "pt": {
+              "localize": ["pt"]
+            },
+            "es": {
+              "localize": ["es"]
             }
           }
         },
@@ -69,8 +86,14 @@
             "browserTarget": "globosatfrt:build"
           },
           "configurations": {
-            "production": {
+            "en": {
               "browserTarget": "globosatfrt:build:production"
+            },
+            "es": {
+              "browserTarget": "globosatfrt:build:es"
+            },
+            "pt": {
+              "browserTarget": "globosatfrt:build:pt"
             }
           }
         },

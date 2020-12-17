@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 // Animations
 import { fade } from '../shared/element.animations';
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/home';
   }
 
   public doLogin(): void {
