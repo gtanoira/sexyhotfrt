@@ -1,5 +1,5 @@
 // This components is for print error messages on the screen
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
@@ -15,7 +15,9 @@ export class MessagesService {
   private _programTitleSubject = new BehaviorSubject('');
   public programTitle = this._programTitleSubject.asObservable();
 
-  constructor() { }
+  constructor(
+    @Inject(LOCALE_ID) protected localeId: string
+  ) {}
 
   // Emit an error message to the screen
   public changeErrorMessage(message: string): void {
@@ -27,4 +29,6 @@ export class MessagesService {
     this._programTitleSubject.next(programTitle);
   }
 
+  // Default language
+  get defaultLanguage(): string { return this.localeId; }
 }

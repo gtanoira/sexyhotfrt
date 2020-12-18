@@ -9,8 +9,26 @@
         <img src="assets/images/sexyhot_logo.svg">
       </a>
 
-      <!-- Login section -->
-      <section class="login-section">
+      <div class="header-right">
+
+        <!-- language Selection -->
+        <div class="language">
+          <button mat-icon-button [matMenuTriggerFor]="language">
+            <mat-icon>language</mat-icon>
+          </button>
+          <mat-menu #language="matMenu" xPosition="before">
+            <a mat-menu-item href="/">
+              <span>en - English</span>
+            </a>
+            <a mat-menu-item href="/es">
+              <span>es - Español</span>
+            </a>
+            <a mat-menu-item href="/pt">
+              <span>pt - Português</span>
+            </a>
+          </mat-menu>
+
+        </div>
 
         <!-- Login button -->
         <div class="card-container">
@@ -19,13 +37,15 @@
             <span i18n="Main Page Header|Log In@@LogIn">Log In</span>
           </a>
         </div>
-
-        <!-- Login component -->
-        <ng-container class="login_component" *ngIf="activateLogin">
-          <app-login [@fade]></app-login>
-        </ng-container>
-      </section>
+      </div>
     </header>
+
+    <!-- Login component -->
+    <ng-container *ngIf="activateLogin">
+      <app-login [@fade] class="login-section"></app-login>
+    </ng-container>
+
+    <div class="filler"></div>
 
     <!-- Footer -->
     <footer class="footer">

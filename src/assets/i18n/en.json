@@ -1,0 +1,6 @@
+{
+  "loginComponent" : {
+    "FIELDS-INCOMPLETE": "The fields are incomplete.",
+    "WAIT-LOGGING-IN": "Wait, logging in ... "
+  }
+}

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 // Animations
 import { fade } from '../shared/element.animations';
+// i18n: ngx-translate
+import { TranslateService } from '@ngx-translate/core';
 // Services
 import { AuthenticationService } from '../core/authentication.service';
+import { MessagesService } from '../core/messages.service';
 
 @Component({
   selector: 'app-login',
@@ -25,13 +28,23 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private fb: FormBuilder,
-    private router: Router
+    private messagesService: MessagesService,
+    private router: Router,
+    private translate: TranslateService
   ) {
     // Define login form
     this.loginForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    console.log('*** Default language:', this.messagesService.defaultLanguage);
+    this.translate.get('FIELDS-INCOMPLETE').subscribe(
+      text => { console.log('*** fields incomplete:', text); }
+    );
+    // i18n: ngx-translate
+    this.translate.setDefaultLang('en');
+    this.translate.use(this.messagesService.defaultLanguage);
   }
 
   // GETTERS
@@ -45,9 +58,13 @@ export class LoginComponent implements OnInit {
 
   public doLogin(): void {
     if (this.loginForm.invalid) {
-      this.errorMsg = 'The fields are incomplete.';
+      this.translate.get('loginComponent.FIELDS-INCOMPLETE').subscribe(
+        text => this.errorMsg = text
+      );
     } else {
-      this.errorMsg = 'Wait, logging in ... ';  // deletes the error message
+      this.translate.get('loginComponent.WAIT-LOGGING-IN').subscribe(
+        text => this.errorMsg = text
+      );
       // Autenticar al usuario contra el Login Central
       this.authenticationService.login(this.userName.value, this.password.value)
         .subscribe(
