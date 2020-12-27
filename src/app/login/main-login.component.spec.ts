@@ -20,7 +20,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'globosatfrt'`, () => {
+  it(`should have as title 'sexyhotfrt'`, () => {
     const fixture = TestBed.createComponent(MainLoginComponent);
     const app = fixture.componentInstance;
     expect(app.activateLogin).toEqual(false);
@@ -30,6 +30,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(MainLoginComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('globosatfrt app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('sexyhotfrt app is running!');
   });
 });

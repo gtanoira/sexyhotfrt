@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "globosatfrt": {
+    "sexyhotfrt": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -25,7 +25,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/globosatfrt",
+            "outputPath": "dist/sexyhotfrt",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -83,24 +83,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "globosatfrt:build"
+            "browserTarget": "sexyhotfrt:build"
           },
           "configurations": {
             "en": {
-              "browserTarget": "globosatfrt:build:production"
+              "browserTarget": "sexyhotfrt:build:production"
             },
             "es": {
-              "browserTarget": "globosatfrt:build:es"
+              "browserTarget": "sexyhotfrt:build:es"
             },
             "pt": {
-              "browserTarget": "globosatfrt:build:pt"
+              "browserTarget": "sexyhotfrt:build:pt"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "globosatfrt:build"
+            "browserTarget": "sexyhotfrt:build"
           }
         },
         "test": {
@@ -138,16 +138,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "globosatfrt:serve"
+            "devServerTarget": "sexyhotfrt:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "globosatfrt:serve:production"
+              "devServerTarget": "sexyhotfrt:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "globosatfrt"
+  "defaultProject": "sexyhotfrt"
 }

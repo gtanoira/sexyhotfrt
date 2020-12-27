@@ -80,6 +80,36 @@
         <note priority="1" from="description">Copyright text</note>
         <note priority="1" from="meaning">Main Page Footer</note>
       </trans-unit>
+      <trans-unit id="MenuPpal-GridsImportBatchs" datatype="html">
+        <source>Grid Import (batchs)</source>
+        <target>Importación de grillas (lotes)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Menu options</note>
+        <note priority="1" from="meaning">Main Menu</note>
+      </trans-unit>
+      <trans-unit id="MenuPpal-PhotoUploads" datatype="html">
+        <source>Photo uploads</source>
+        <target>Uploads de fotos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">Menu options</note>
+        <note priority="1" from="meaning">Main Menu</note>
+      </trans-unit>
+      <trans-unit id="ErrorMessageCloseButton" datatype="html">
+        <source>close</source>
+        <target>cerrar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/error-messages/error-messages.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Close button title</note>
+        <note priority="1" from="meaning">ErrorMessageModal</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -13,15 +13,27 @@
     <mat-divider></mat-divider>
     <!-- menu options -->
     <mat-nav-list>
-      <a mat-list-item routerLink="/home/grids" routerLinkActive="active-link">Grid imports</a>
-      <a mat-list-item  routerLink="/photos/upload" routerLinkActive="active-link">Photo uploads</a>
-      <a mat-list-item (click)="prueba()">Link 3</a>
+      <a mat-list-item
+        routerLink="/home/grids"
+        routerLinkActive="active-link"
+        i18n="Main Menu|Menu options@@MenuPpal-GridsImportBatchs"
+      >Grid Import (batchs)</a>
+      <a mat-list-item
+        routerLink="/photos/upload"
+        routerLinkActive="active-link"
+        i18n="Main Menu|Menu options@@MenuPpal-PhotoUploads"
+      >Photo uploads</a>
+      <a mat-list-item
+        (click)="prueba()"
+      >Testing options</a>
     </mat-nav-list>
   </mat-sidenav>
 
   <!-- HTML BODY -->
   <mat-sidenav-content class="content">
-    <mat-toolbar color="content--toolbar">
+    <!-- HEADER body -->
+    <mat-toolbar>
+
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -30,8 +42,21 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{programTitle}}</span>
+      <span #pgmTitle class="pgm-title"></span>
+
+      <!-- Language Badge -->
+      <mat-icon
+        class="language-badge"
+        [matBadge]="messagesService.defaultLanguage"
+        matBadgeColor="primary"
+        matTooltip="Language selected"
+        matTooltipPosition="left"
+        >
+        language
+      </mat-icon>
+
     </mat-toolbar>
+
     <!-- Error Messages section -->
     <app-error-messages class="content--error"></app-error-messages>
 

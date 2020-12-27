@@ -1,1 +1,1 @@
-ng serve -o --configuration=en
+ng serve --configuration=en

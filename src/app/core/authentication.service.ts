@@ -39,7 +39,7 @@ export class AuthenticationService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post<User>(`${environment.globosatBackend}/login`, body, {headers})
+    return this.http.post<User>(`${environment.sexyhotBackend}/login`, body, {headers})
       .pipe(
         map(
           data => {

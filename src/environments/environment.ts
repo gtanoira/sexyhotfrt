@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  globosatBackend: 'http://localhost:4700'   // 'http://admapps02:4800'  //
+  sexyhotBackend: 'http://localhost:4700'   // 'http://admapps02:4800'  //
 };
 
 /*

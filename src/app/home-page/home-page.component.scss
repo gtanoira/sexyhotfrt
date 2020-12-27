@@ -31,12 +31,6 @@
 .content {
   background-color: #eee;
 
-  &--toolbar {
-    position: relative;
-    top: 0;
-    z-index: 1;
-  }
-
   &--error {
     position: absolute;
     right: 6px;
@@ -55,4 +49,12 @@
       border-color: white;
     }
   }
+}
+
+.language-badge {
+  margin: 0 1em 0 auto;
+}
+
+.pgm-title {
+  margin-left: 0.25em;
 }

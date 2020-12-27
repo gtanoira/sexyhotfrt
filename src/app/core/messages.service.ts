@@ -30,5 +30,5 @@ export class MessagesService {
   }
 
   // Default language
-  get defaultLanguage(): string { return this.localeId; }
+  public get defaultLanguage(): string { return this.localeId; }
 }

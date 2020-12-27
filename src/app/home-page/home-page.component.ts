@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -14,28 +14,31 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomePageComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   // Variables
   public currentUser: User;
-  public programTitle = 'hhhhh';
-  private prueba1 = false;
+  public programTitle = '';
 
   // Subscriptions
   private currentProgram: Subscription;  // to obtain the title of the program currently running
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  // For responsiveness
+  public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+
+  // DOM elements
+  @ViewChild('pgmTitle', { static: false }) titleElement: ElementRef;
 
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private breakpointObserver: BreakpointObserver,
-    private messagesService: MessagesService
+    public messagesService: MessagesService
   ) {
     // Subscribe to the currentProgramTitle, to show program's title on the screen
     this.currentProgram = this.messagesService.programTitle.subscribe(
@@ -46,10 +49,15 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     // Get the user info
     this.currentUser = this.authenticationService.currentUser;
+    // ProgramTitle
+    this.messagesService.changeProgramTitle('Home Page');
   }
 
-  ngAfterViewInit(): void {
-    this.programTitle = '';
+  ngAfterViewChecked(): void {
+    // Show program title if it changes
+    if (this.programTitle !== this.titleElement.nativeElement.innerText) {
+      this.titleElement.nativeElement.innerText = this.programTitle;
+    }
   }
 
   ngOnDestroy(): void {

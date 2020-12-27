@@ -68,7 +68,7 @@ import { interceptorProviders } from './core/interceptors/interceptors';
           useFactory: (createTranslateLoader),
           deps: [HttpClient]
       }
-  })
+    })
   ],
   providers: [
     // Interceptors
