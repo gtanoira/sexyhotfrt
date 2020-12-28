@@ -37,11 +37,6 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    console.log('*** Default language:', this.messagesService.defaultLanguage);
-    this.translate.get('FIELDS-INCOMPLETE').subscribe(
-      text => { console.log('*** fields incomplete:', text); }
-    );
     // i18n: ngx-translate
     this.translate.setDefaultLang('en');
     this.translate.use(this.messagesService.defaultLanguage);

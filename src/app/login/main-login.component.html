@@ -40,10 +40,13 @@
       </div>
     </header>
 
-    <!-- Login component -->
-    <ng-container *ngIf="activateLogin">
-      <app-login [@fade] class="login-section"></app-login>
-    </ng-container>
+    <section class="body">
+      <img class="image" [src]="appTitleImage" alt="">
+      <!-- Login component -->
+      <ng-container *ngIf="activateLogin">
+        <app-login [@fade] class="login-section"></app-login>
+      </ng-container>
+    </section>
 
     <div class="filler"></div>
 

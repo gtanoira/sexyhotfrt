@@ -11,14 +11,15 @@ const routes: Routes = [
   // Home Page: main menu
   {
     path: 'home',
-    loadChildren: () => import('./home-page/home-page.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./home-page/home-page.module').then(m => m.HomePageModule),
+    data: { animation: 'homePage' }
   },
 
   /**
    * NOT LAZY LOADING
    */
   // Main Login: login page
-  { path: '', component: MainLoginComponent, pathMatch: 'full' },
+  { path: '', component: MainLoginComponent, pathMatch: 'full', data: { animation: 'mainPage' } },
 
   // otherwise redirect to Main Page
   { path: '**', redirectTo: '/' }

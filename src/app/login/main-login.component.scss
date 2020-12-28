@@ -47,15 +47,30 @@
   margin-right: 2em;
 }
 
-.footer {
-  padding-bottom: 1em;
+.body {
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  top: 6em;
+  left: 3em;
+  display: inline-block;
+  width: calc(50% - 3em)
 }
 
 .login-section {
-  margin: 0 2em 0 auto;
+  position: absolute;
+  top: 0;
+  right: 2em;
+  display: inline-block;
+  /* margin: 0 2em 0 auto; */
   width: 300px; /* mobile */
 }
 
+.footer {
+  padding-bottom: 1em;
+}
 .language {
   margin-right: 2em;
 }

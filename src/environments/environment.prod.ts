@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  sexyhotBackend: 'http://admapps02:4700'
+  sexyhotBackend: 'http://admapps02:4800'
 };
