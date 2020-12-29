@@ -57,6 +57,9 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
         } else {
           this.dataSource.data = data;
         }
+      },
+      error => {
+        this.messagesService.changeErrorMessage(error.error.message);
       }
     );
   }

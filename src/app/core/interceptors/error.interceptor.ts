@@ -30,6 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       // An error occur in HTTP request/response
       catchError(
         err => {
+          console.log('*** HTTP response error:', err);
           if (err.statusText === 'Unknown Error' || err.status === 0) {
             // Chequear la conexión con el host
             err.error.message = 'GS-010(E): backend error server.';
