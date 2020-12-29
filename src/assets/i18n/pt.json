@@ -5,5 +5,8 @@
   },
   "importBatchs": {
     "TITLE": "Importação de Grade (lotes)"
+  },
+  "errors": {
+    "GS-011": "GS-011(E): não há nada para processar"
   }
 }

@@ -5,5 +5,9 @@
   },
   "importBatchs": {
     "TITLE": "Grid Import (batchs)"
+  },
+  "errors": {
+    "GS-011": "GS-011(E): there is nothing to process"
   }
+
 }

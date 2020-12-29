@@ -1,1 +1,49 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi pariatur, eum amet porro vitae neque tenetur, suscipit autem nam sunt harum ullam alias blanditiis debitis libero facere voluptatum necessitatibus commodi.</p>
+<div class="container">
+
+  <!-- Filter section -->
+  <div class="filter">
+  </div>
+
+  <!-- Batchs Table -->
+  <mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="table"
+    >
+
+    <!-- column channelName -->
+    <ng-container matColumnDef="channelName" mat-sort-header>
+      <mat-header-cell *matHeaderCellDef
+      i18n="Batchs Table|@@column_channelName"
+      > Channel Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.channelName}} </mat-cell>
+    </ng-container>
+
+    <!-- columna firstEvent -->
+    <ng-container matColumnDef="firstEvent" mat-sort-header>
+      <mat-header-cell *matHeaderCellDef
+      i18n="Batchs Table|@@column_firstEvent"
+      > First Event </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.firstEvent | date: 'y, MMM d, H:mm:ss z': tz}} </mat-cell>
+    </ng-container>
+
+    <!-- columna lastEvent -->
+    <ng-container matColumnDef="lastEvent" mat-sort-header>
+      <mat-header-cell *matHeaderCellDef
+      i18n="Batchs Table|@@column_lastEvent"
+      > Last Event </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastEvent | date: 'y, MMM d, H:mm:ss z': tz}} </mat-cell>
+    </ng-container>
+
+    <!-- columna createdAt -->
+    <ng-container matColumnDef="createdAt" mat-sort-header>
+      <mat-header-cell *matHeaderCellDef
+      i18n="Batchs Table|@@column_createdAt"
+      > Created </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.createdAt | date: 'y, MMM d, H:mm:ss z'}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"></mat-row>
+  </mat-table>
+</div>

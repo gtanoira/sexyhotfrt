@@ -24,6 +24,9 @@ import { HomePageRoutingModule } from './home-page-routing.module';
 import { ErrorMessagesComponent } from '../core/error-messages/error-messages.component';
 import { HomePageComponent } from './home-page.component';
 // Services
+// Modules
+import { ImportBatchsModule } from '../import-batchs/import-batchs.module';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { HomePageComponent } from './home-page.component';
     HomePageComponent
   ],
   imports: [
+    // Modules
+    ImportBatchsModule,
     // Angular
     CommonModule,
     // Angular Material

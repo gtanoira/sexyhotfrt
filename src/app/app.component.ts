@@ -8,7 +8,7 @@ import { routeAnimation, slideToTop } from './shared/router.animations';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    //routeAnimation
+    // routeAnimation
     slideToTop()
   ]
 })

@@ -11,9 +11,11 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
 }
 
 // Angular Material
+import { MatTableModule } from '@angular/material/table';
 // Components
 import { ImportBatchsComponent } from './import-batchs.component';
 // Services
+import { BatchsService } from '../shared/batchs.service';
 
 @NgModule({
   declarations: [
@@ -22,16 +24,18 @@ import { ImportBatchsComponent } from './import-batchs.component';
   imports: [
     CommonModule,
     // Angular Material
+    MatTableModule,
     // i18n
     TranslateModule.forChild({
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
       }
     })
   ],
   providers: [
+    BatchsService
   ]
 })
 export class ImportBatchsModule { }

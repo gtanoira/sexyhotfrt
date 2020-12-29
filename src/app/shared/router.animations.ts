@@ -60,20 +60,24 @@ export function slideToBottom(): AnimationTriggerMetadata {
 
 export function slideToTop(): AnimationTriggerMetadata {
   return trigger('routeAnimation', [
-    state('mainPage', style({ position: 'relative' })),
-    state('*', style({
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%'
-    })),
-    transition(':enter', [
-      style({ transform: 'translateY(100%)' }),
-      animate('0.5s ease-in-out', style({ transform: 'translateY(0%)' }))
-    ]),
-    transition(':leave', [
-      style({ transform: 'translateY(0%)' }),
-      animate('0.5s ease-in-out', style({ transform: 'translateY(-100%)' }))
+    transition('mainPage <=> *', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ]),
+      transition(':enter', [
+        style({ transform: 'translateY(100%)' }),
+        animate('0.5s ease-in-out', style({ transform: 'translateY(0%)' }))
+      ]),
+      transition(':leave', [
+        style({ transform: 'translateY(0%)' }),
+        animate('0.5s ease-in-out', style({ transform: 'translateY(-100%)' }))
+      ])
     ])
   ]);
 }

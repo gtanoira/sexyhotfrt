@@ -13,7 +13,7 @@ export class AuxiliarTablesService {
   // Read a JSON file and return its content
   // All files MUST be located in assets/files
   public getTableFromJson(tableName: string): Observable<{[key: string]: any}[] | unknown> {
-    return this.http.get<{[key: string]: any}[]>(`/assets/files/${tableName}`);
+    return this.http.get<{[key: string]: any}[]>(`assets/files/${tableName}`);
   }
 
   // Establecer las Opciones de un campo (INPUT) a través de un archivo Json

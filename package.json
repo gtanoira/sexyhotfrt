@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "i18n": "ng extract-i18n --output-path src/i18n --out-file en.xlf --format xlf"
+    "i18n": "ng extract-i18n --output-path src/ --out-file i18n-en.xlf --format xlf"
   },
   "private": true,
   "dependencies": {

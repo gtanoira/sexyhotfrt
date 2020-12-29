@@ -5,5 +5,8 @@
   },
   "importBatchs": {
     "TITLE": "Importación de Grillas (lotes)"
+  },
+  "errors": {
+    "GS-011": "GS-011(E): no hay nada que procesar"
   }
 }

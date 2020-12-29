@@ -1,1 +1,1 @@
-ng build --production
+ng build

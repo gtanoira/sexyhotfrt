@@ -4,7 +4,6 @@
     <body>
       <trans-unit id="userName" datatype="html">
         <source>User name</source>
-        <target>User name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">11</context>
@@ -14,7 +13,6 @@
       </trans-unit>
       <trans-unit id="3a2246ef82e62febda695dbcefb38b7b4a792f77" datatype="html">
         <source>your user name</source>
-        <target>your user name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">15</context>
@@ -22,7 +20,6 @@
       </trans-unit>
       <trans-unit id="fb95a846b6c8f9492832ee3fbabf4d8e71e07dd3" datatype="html">
         <source>This field is required</source>
-        <target>This field is required</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">18</context>
@@ -36,7 +33,6 @@
       </trans-unit>
       <trans-unit id="password" datatype="html">
         <source>Password</source>
-        <target>Password</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">25</context>
@@ -46,7 +42,6 @@
       </trans-unit>
       <trans-unit id="d8b81951d25439864e92f750f7c99d7426d6517c" datatype="html">
         <source>password</source>
-        <target>password</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">30</context>
@@ -54,7 +49,6 @@
       </trans-unit>
       <trans-unit id="3472e07c2c71430fca2252e24011ba52e7425203" datatype="html">
         <source> Login </source>
-        <target> Login </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">41,42</context>
@@ -62,7 +56,6 @@
       </trans-unit>
       <trans-unit id="LogIn" datatype="html">
         <source>Log In</source>
-        <target>Log In</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/main-login.component.html</context>
           <context context-type="linenumber">37</context>
@@ -72,7 +65,6 @@
       </trans-unit>
       <trans-unit id="FooterCopyright" datatype="html">
         <source>2021 copyright - All rights reserved</source>
-        <target>2021 copyright - All rights reserved</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/main-login.component.html</context>
           <context context-type="linenumber">56</context>
@@ -82,7 +74,6 @@
       </trans-unit>
       <trans-unit id="MenuPpal-GridsImportBatchs" datatype="html">
         <source>Grid Import (batchs)</source>
-        <target>Grid Import (batchs)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
           <context context-type="linenumber">20</context>
@@ -92,7 +83,6 @@
       </trans-unit>
       <trans-unit id="MenuPpal-PhotoUploads" datatype="html">
         <source>Photo uploads</source>
-        <target>Photo uploads</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
           <context context-type="linenumber">25</context>
@@ -102,7 +92,6 @@
       </trans-unit>
       <trans-unit id="ErrorMessageCloseButton" datatype="html">
         <source>close</source>
-        <target>close</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/error-messages/error-messages.component.html</context>
           <context context-type="linenumber">6</context>
@@ -112,7 +101,6 @@
       </trans-unit>
       <trans-unit id="column_channelName" datatype="html">
         <source> Channel Name </source>
-        <target> Channel Name </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
           <context context-type="linenumber">18</context>
@@ -121,7 +109,6 @@
       </trans-unit>
       <trans-unit id="column_firstEvent" datatype="html">
         <source> First Event </source>
-        <target> First Event </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
           <context context-type="linenumber">26</context>
@@ -130,7 +117,6 @@
       </trans-unit>
       <trans-unit id="column_lastEvent" datatype="html">
         <source> Last Event </source>
-        <target> Last Event </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
           <context context-type="linenumber">34</context>
@@ -139,7 +125,6 @@
       </trans-unit>
       <trans-unit id="column_createdAt" datatype="html">
         <source> Created </source>
-        <target> Created </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
           <context context-type="linenumber">42</context>
