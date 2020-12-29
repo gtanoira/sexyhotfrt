@@ -11,6 +11,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
 }
 
 // Angular Material
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 // Components
 import { ImportBatchsComponent } from './import-batchs.component';
@@ -24,6 +25,7 @@ import { BatchsService } from '../shared/batchs.service';
   imports: [
     CommonModule,
     // Angular Material
+    MatSortModule,
     MatTableModule,
     // i18n
     TranslateModule.forChild({

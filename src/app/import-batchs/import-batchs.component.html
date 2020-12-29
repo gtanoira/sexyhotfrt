@@ -12,32 +12,32 @@
     >
 
     <!-- column channelName -->
-    <ng-container matColumnDef="channelName" mat-sort-header>
-      <mat-header-cell *matHeaderCellDef
+    <ng-container matColumnDef="channelName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
       i18n="Batchs Table|@@column_channelName"
       > Channel Name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.channelName}} </mat-cell>
     </ng-container>
 
     <!-- columna firstEvent -->
-    <ng-container matColumnDef="firstEvent" mat-sort-header>
-      <mat-header-cell *matHeaderCellDef
+    <ng-container matColumnDef="firstEvent">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
       i18n="Batchs Table|@@column_firstEvent"
       > First Event </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.firstEvent | date: 'y, MMM d, H:mm:ss z': tz}} </mat-cell>
     </ng-container>
 
     <!-- columna lastEvent -->
-    <ng-container matColumnDef="lastEvent" mat-sort-header>
-      <mat-header-cell *matHeaderCellDef
+    <ng-container matColumnDef="lastEvent">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
       i18n="Batchs Table|@@column_lastEvent"
       > Last Event </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.lastEvent | date: 'y, MMM d, H:mm:ss z': tz}} </mat-cell>
     </ng-container>
 
     <!-- columna createdAt -->
-    <ng-container matColumnDef="createdAt" mat-sort-header>
-      <mat-header-cell *matHeaderCellDef
+    <ng-container matColumnDef="createdAt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
       i18n="Batchs Table|@@column_createdAt"
       > Created </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.createdAt | date: 'y, MMM d, H:mm:ss z'}} </mat-cell>
