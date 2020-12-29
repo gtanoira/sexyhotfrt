@@ -25,6 +25,7 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
     'channelName',
     'firstEvent',
     'lastEvent',
+    'days',
     'createdAt'
   ];
   public dataSource = new MatTableDataSource<Batch>([]);

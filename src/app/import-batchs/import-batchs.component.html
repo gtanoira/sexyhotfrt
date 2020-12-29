@@ -35,6 +35,13 @@
       <mat-cell *matCellDef="let element"> {{element.lastEvent | date: 'y, MMM d, H:mm:ss z': tz}} </mat-cell>
     </ng-container>
 
+    <!-- days -->
+    <ng-container matColumnDef="days">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+      > Days </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastEvent - element.firstEvent}} </mat-cell>
+    </ng-container>
+
     <!-- columna createdAt -->
     <ng-container matColumnDef="createdAt">
       <mat-header-cell *matHeaderCellDef mat-sort-header
