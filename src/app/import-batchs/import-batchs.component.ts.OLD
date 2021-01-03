@@ -60,9 +60,48 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
       this.messagesService.changeProgramTitle(text);
     });
 
+    // Get the total batchs in the DBase
+    this.batchsService.getTotalBatchs().subscribe(
+      data => this.totalRows = data
+    );
   }
 
   ngAfterViewInit(): void {
+
+    // If the user changes the sort order, reset back to the first page.
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    // Based on changes in sort or pagination, get new data
+    merge(this.sort.sortChange, this.paginator.page)
+    .pipe(
+      startWith({}),
+      switchMap(() => {
+        this.isLoadingResults = true;
+        this.recsPerPage = this.paginator.pageSize;
+        console.log('***');
+        console.log('*** params:', this.sort.active, this.sort.direction, this.paginator.pageIndex);
+        console.log('*** paginator:', this.paginator.pageIndex, this.paginator.pageSize, this.paginator.length);
+
+        return this.batchsService.getPage({
+          sortField: this.sort.active,
+          sortDirection: this.sort.direction,
+          pageIndex: this.paginator.pageIndex,
+          recsPerPage: this.recsPerPage
+        });
+      }),
+      map(data => {
+        this.isLoadingResults = false;
+        console.log('*** totalRows:', this.totalRows, this.paginator.length);
+        return data;
+      }),
+      catchError(error => {
+        this.isLoadingResults = false;
+        this.messagesService.changeErrorMessage(error.message);
+        return of([]);
+      })
+    ).subscribe(batchs => {
+      this.batchsTable = batchs;
+    });
   }
 
 }

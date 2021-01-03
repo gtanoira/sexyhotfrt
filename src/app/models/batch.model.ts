@@ -4,6 +4,7 @@ export class Batch {
   channelName: string;
   firstEvent: string;
   lastEvent: string;
+  totalEvents: number;
   createdAt?: string;
   createdBy?: string;
 }

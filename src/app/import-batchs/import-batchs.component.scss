@@ -63,13 +63,35 @@
   background-color: rgba(170,170,170,0.31);
 }
 
+.loading-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /*
   Table CSS
 */
 
-.table {
-  width: 100%;
+.table-container {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
 }
+
+.table {
+  position: relative;
+  /* max-height: 400px; */
+  overflow: auto;
+}
+
 
 /* Columnas */
 /* .mat-header-row,
@@ -85,7 +107,7 @@
 .mat-column {
 
   &-channelName {
-    flex: 0 0 200px;
+    flex: 0 0 170px;
   }
 
   &-firstEvent {
@@ -96,7 +118,7 @@
     flex: 0 0 200px;
   }
 
-  &-days {
+  &-totalEvents {
     flex: 0 0 60px;
   }
 
@@ -111,7 +133,10 @@
   }
 }
 
-/* *******************
-   TYPOGRAPHY
+/* ****************************
+   Angular Material elements
  */
+.mat-header-cell {
+  font-weight: 700;
+}
 

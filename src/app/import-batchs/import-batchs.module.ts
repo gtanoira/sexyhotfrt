@@ -11,7 +11,9 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
 }
 
 // Angular Material
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 // Components
 import { ImportBatchsComponent } from './import-batchs.component';
@@ -25,7 +27,9 @@ import { BatchsService } from '../shared/batchs.service';
   imports: [
     CommonModule,
     // Angular Material
+    MatPaginatorModule,
     MatSortModule,
+    MatProgressSpinnerModule,
     MatTableModule,
     // i18n
     TranslateModule.forChild({
