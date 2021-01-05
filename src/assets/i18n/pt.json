@@ -8,5 +8,13 @@
   },
   "errors": {
     "GS-011": "GS-011(E): não há nada para processar"
+  },
+  "paginator": {
+    "ITEMS_PER_PAGE": "Itens por página",
+    "NEXT_PAGE": "Próxima página",
+    "PREV_PAGE": "Página anterior",
+    "FIRST_PAGE": "Primeira página",
+    "LAST_PAGE": "Última página",
+    "OF": "do"
   }
 }

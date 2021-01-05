@@ -33,9 +33,9 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
   ];
   public batchsTable = new PaginatedDataSource<Batch, BatchQuery>(
     (request, query) => this.batchsService.getPage(request, query),
-    {property: 'createdAt', order: 'desc'},
-    {search: undefined},  // no query
-    2
+    {property: 'createdAt', order: 'desc'},  // initial sort
+    {search: undefined},  // initial query: no query
+    5  // initial pageSize
   );
   public noData: boolean;
 
