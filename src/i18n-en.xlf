@@ -99,11 +99,20 @@
         <note priority="1" from="description">Close button title</note>
         <note priority="1" from="meaning">ErrorMessageModal</note>
       </trans-unit>
+      <trans-unit id="No-Data" datatype="html">
+        <source>No data to show</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Generic</note>
+        <note priority="1" from="meaning">Generic</note>
+      </trans-unit>
       <trans-unit id="column_channelName" datatype="html">
         <source> Channel Name </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <note priority="1" from="meaning">Batchs Table</note>
       </trans-unit>
@@ -111,7 +120,7 @@
         <source> First Event </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <note priority="1" from="meaning">Batchs Table</note>
       </trans-unit>
@@ -119,7 +128,7 @@
         <source> Last Event </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="meaning">Batchs Table</note>
       </trans-unit>
@@ -127,7 +136,7 @@
         <source> Events </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <note priority="1" from="meaning">Batchs Table</note>
       </trans-unit>
@@ -135,7 +144,7 @@
         <source> Created </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="meaning">Batchs Table</note>
       </trans-unit>

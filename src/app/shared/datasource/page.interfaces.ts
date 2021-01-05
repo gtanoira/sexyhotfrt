@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 
 // Sorting to be applied
-export interface Sort<T> {
-  property: keyof T;
+export interface Sort {
+  property: string;
   order: 'asc' | 'desc';
 }
 
@@ -10,7 +10,7 @@ export interface Sort<T> {
 export interface PageRequest<T> {
   page: number;
   size: number;
-  sort?: Sort<T>;
+  sort?: Sort;
 }
 
 // Requested Data (items to be displayed in the screen)

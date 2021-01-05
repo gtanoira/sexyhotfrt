@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Sort } from '@angular/material/sort';
+import { PageEvent } from '@angular/material/paginator';
 import { TranslateService } from '@ngx-translate/core';
-import { catchError, map, startWith, switchMap, tap } from 'rxjs/operators';
-import { merge, of } from 'rxjs';
+import { takeUntil, takeWhile } from 'rxjs/operators';
 
 // Services
 import { BatchQuery, BatchsService } from '../shared/batchs.service';
@@ -15,7 +14,8 @@ import { Batch } from '../models/batch.model';
 @Component({
   selector: 'app-import-batchs',
   templateUrl: './import-batchs.component.html',
-  styleUrls: ['./import-batchs.component.scss']
+  styleUrls: ['./import-batchs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImportBatchsComponent implements OnInit, AfterViewInit {
 
@@ -34,16 +34,10 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
   public batchsTable = new PaginatedDataSource<Batch, BatchQuery>(
     (request, query) => this.batchsService.getPage(request, query),
     {property: 'createdAt', order: 'desc'},
-    {search: 'channelName'},
+    {search: undefined},  // no query
     2
   );
-  public isLoadingResults: boolean;
-  public recsPerPage = 2;
-  public totalRows = 0;
-
-  // HTML element para ordenar la tabla (sort)
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  public noData: boolean;
 
   constructor(
     private batchsService: BatchsService,
@@ -63,6 +57,33 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    console.log('*** batchsTable:', this.batchsTable);
+    console.log('*** batchsService allBatchs:', this.batchsService.allBatchs);
+    this.batchsTable.fetch(1);
+
+    // Get and cache all batchs
+    this.batchsService.getAll()
+    .pipe(takeWhile(total => total >= 0))
+    .subscribe(data => {
+      this.noData = data === 0 ? true : false;
+      if (data > 0) {
+        this.batchsTable.fetch(0);
+      }
+    });
+  }
+
+  public changeSort(sort: Sort): void {
+    console.log('*** event Sort:', sort);
+    if (sort.active && sort.direction !== '') {
+      const toSort = { property: sort.active.toString(), order: sort.direction };
+      this.batchsTable.sortBy({ property: sort.active, order: sort.direction });
+    }
+  }
+
+  public changePage(pageEvent: PageEvent): void {
+    console.log('*** page event:', pageEvent);
+    this.batchsTable.pageSize = pageEvent.pageSize;
+    this.batchsTable.fetch(pageEvent.pageIndex);
   }
 
 }

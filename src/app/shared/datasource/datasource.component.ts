@@ -1,11 +1,10 @@
 import { DataSource } from '@angular/cdk/collections';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
-import { combineLatest } from 'rxjs/index';
+import { Subject, Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { startWith, switchMap, share, pluck } from 'rxjs/operators';
 // Datasource
 import { indicate } from './operators';
 // Interfaces
-import { Page, Sort, PageRequest, PaginatedEndpoint } from './page.interfaces';
+import { Page, Sort, PaginatedEndpoint } from './page.interfaces';
 
 export interface SimpleDataSource<T> extends DataSource<T> {
   connect(): Observable<T[]>;
@@ -16,7 +15,7 @@ export class PaginatedDataSource<T, Q> implements SimpleDataSource<T> {
 
   // Variables
   private pageNumber = new Subject<number>();  // for any change in the page index of the table
-  private sort = new Subject<Sort<T>>();  // For any change in the sort of the table
+  private sort = new Subject<Sort>();  // For any change in the sort of the table
   private query: BehaviorSubject<Q>;  // For any changes in the query of the table
 
   // spinner
@@ -27,15 +26,15 @@ export class PaginatedDataSource<T, Q> implements SimpleDataSource<T> {
   public page$: Observable<Page<T>>;
 
   constructor(
-    private endpoint: PaginatedEndpoint<T, Q>,
-    initialSort: Sort<T>,
+    public endpoint: PaginatedEndpoint<T, Q>,
+    initialSort: Sort,
     initialQuery: Q,
     public pageSize = 20
   ) {
 
     // Set the observable to whatch for query and sort changes
     this.query = new BehaviorSubject<Q>(initialQuery);
-    this.sort = new BehaviorSubject<Sort<T>>(initialSort);
+    this.sort = new BehaviorSubject<Sort>(initialSort);
     const param$ = combineLatest([this.query, this.sort]);
     // Get the new page of items
     this.page$ = param$.pipe(
@@ -51,7 +50,7 @@ export class PaginatedDataSource<T, Q> implements SimpleDataSource<T> {
   }
 
   // Sort the items by a certain field
-  public sortBy(sort: Sort<T>): void {
+  public sortBy(sort: Sort): void {
     this.sort.next(sort);
   }
 
