@@ -2,6 +2,25 @@
 
   <!-- Filter section -->
   <div class="filter">
+    <h3 class="filter-title" i18n="Import Grids|Filter Titles@@Filter-Titles">Filters:</h3>
+
+    <!-- Channel Name -->
+    <mat-form-field
+      color="primary"
+      appearance="fill"
+      class="filter-channel">
+      <mat-label i18n="Import Grids|Filter for channels@@Filter-Channel">Channel</mat-label>
+      <mat-select
+        #filterChannel
+        (selectionChange)="changeFilterChannel($event)">
+        <mat-option i18n="Channel Option|Filter for channles@@Filter-All-Channels">All channels</mat-option>
+        <mat-option
+          *ngFor="let channel of channelOptions"
+          [value]="channel.id">
+          {{ channel.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <!-- Batchs Table -->
@@ -10,9 +29,6 @@
     <div class="loading-spinner" *ngIf="batchsTable && batchsTable.loading$ | async">
       <mat-spinner></mat-spinner>
     </div>
-
-    <!-- No Data -->
-    <div class="no-data" *ngIf="noData !== undefined && noData" i18n="Generic|Generic@@No-Data">No data to show</div>
 
     <mat-table
       [dataSource]="batchsTable"
@@ -68,7 +84,7 @@
       [length]="page.totalElements"
       [pageSize]="page.size"
       [pageIndex]="page.number"
-      [pageSizeOptions]="[5, 10, 20]"
+      [pageSizeOptions]="[5, 7, 10, 20]"
       showFirstLastButtons
       (page)="changePage($event)">
     </mat-paginator>

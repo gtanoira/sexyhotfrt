@@ -54,6 +54,11 @@ export class PaginatedDataSource<T, Q> implements SimpleDataSource<T> {
     this.sort.next(sort);
   }
 
+  queryBy(query: Partial<Q>): void {
+    const lastQuery = this.query.getValue();
+    const nextQuery = {...lastQuery, ...query};
+    this.query.next(nextQuery);
+  }
   // Fetch a page of items
   public fetch(page: number): void {
     this.pageNumber.next(page);

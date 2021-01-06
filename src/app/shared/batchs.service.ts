@@ -75,7 +75,6 @@ export class BatchsService {
         size: pageUsers.length,
         totalElements: filteredBatchs.length
       };
-      console.log('*** page:', page);
       return of(page).pipe(delay(500));
 
     } else {
@@ -130,11 +129,5 @@ export class BatchsService {
     .pipe(map(
       data => data.total
     ));
-  }
-
-  getRepoIssues(sort: string, order: string, page: number): Observable<string> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1}`;
-    return this.http.get<string>(requestUrl);
   }
 }

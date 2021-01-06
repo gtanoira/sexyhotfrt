@@ -73,10 +73,22 @@
               ]
             },
             "pt": {
-              "localize": ["pt"]
+              "localize": ["pt"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "es": {
-              "localize": ["es"]
+              "localize": ["es"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             }
           }
         },

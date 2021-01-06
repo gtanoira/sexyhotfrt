@@ -2,14 +2,17 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angu
 import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { TranslateService } from '@ngx-translate/core';
-import { takeUntil, takeWhile } from 'rxjs/operators';
+import { takeWhile } from 'rxjs/operators';
 
 // Services
 import { BatchQuery, BatchsService } from '../shared/batchs.service';
+import { ChannelsService } from '../shared/channels.service';
 import { MessagesService } from '../core/messages.service';
 import { PaginatedDataSource } from '../shared/datasource/datasource.component';
 // Models
 import { Batch } from '../models/batch.model';
+import { Channel } from '../models/channel.model';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-import-batchs',
@@ -35,12 +38,15 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
     (request, query) => this.batchsService.getPage(request, query),
     {property: 'createdAt', order: 'desc'},  // initial sort
     {search: undefined},  // initial query: no query
-    5  // initial pageSize
+    7  // initial pageSize
   );
-  public noData: boolean;
+
+  // Filters
+  public channelOptions: Channel[] = [];
 
   constructor(
     private batchsService: BatchsService,
+    private channelsService: ChannelsService,
     private messagesService: MessagesService,
     private translate: TranslateService
   ) { }
@@ -54,26 +60,31 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
       this.messagesService.changeProgramTitle(text);
     });
 
+    // Get all Channels
+    this.channelsService.getAll().subscribe(
+      channels => this.channelOptions = channels
+    );
   }
 
   ngAfterViewInit(): void {
-    console.log('*** batchsTable:', this.batchsTable);
-    console.log('*** batchsService allBatchs:', this.batchsService.allBatchs);
-    this.batchsTable.fetch(1);
 
     // Get and cache all batchs
     this.batchsService.getAll()
     .pipe(takeWhile(total => total >= 0))
-    .subscribe(data => {
-      this.noData = data === 0 ? true : false;
-      if (data > 0) {
-        this.batchsTable.fetch(0);
+    .subscribe(
+      data => {
+        if (data > 0) {
+          this.batchsTable.fetch(0);
+        }
+      },
+      error => {
+        const msg = `${error.error.message} \n ${error.message}`;
+        this.messagesService.changeErrorMessage(msg);
       }
-    });
+    );
   }
 
   public changeSort(sort: Sort): void {
-    console.log('*** event Sort:', sort);
     if (sort.active && sort.direction !== '') {
       const toSort = { property: sort.active.toString(), order: sort.direction };
       this.batchsTable.sortBy({ property: sort.active, order: sort.direction });
@@ -81,9 +92,17 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
   }
 
   public changePage(pageEvent: PageEvent): void {
-    console.log('*** page event:', pageEvent);
     this.batchsTable.pageSize = pageEvent.pageSize;
     this.batchsTable.fetch(pageEvent.pageIndex);
   }
 
+  public changeFilterChannel(channelEvent: MatSelectChange): void {
+    if (channelEvent.value) {
+      const query = { search: this.channelOptions[channelEvent.value - 1].name };
+      console.log('*** query:', query);
+      this.batchsTable.queryBy(query);
+    } else {
+      this.batchsTable.queryBy({search: ''});
+    }
+  }
 }

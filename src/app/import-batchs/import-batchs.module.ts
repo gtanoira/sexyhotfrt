@@ -11,14 +11,18 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
 }
 
 // Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms';
 // Components
 import { ImportBatchsComponent } from './import-batchs.component';
 // Services
 import { BatchsService } from '../shared/batchs.service';
+import { ChannelsService } from '../shared/channels.service';
 import { MatPaginatorI18nService } from '../shared/datasource/mat-paginator-i18n.service';
 
 @NgModule({
@@ -27,11 +31,14 @@ import { MatPaginatorI18nService } from '../shared/datasource/mat-paginator-i18n
   ],
   imports: [
     CommonModule,
-    // Angular Material
+    // Angular
+    MatFormFieldModule,
     MatPaginatorModule,
+    MatSelectModule,
     MatSortModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    ReactiveFormsModule,
     // i18n
     TranslateModule.forChild({
       loader: {
@@ -43,6 +50,7 @@ import { MatPaginatorI18nService } from '../shared/datasource/mat-paginator-i18n
   ],
   providers: [
     BatchsService,
+    ChannelsService,
     {
       provide: MatPaginatorIntl,
       useClass: MatPaginatorI18nService,

@@ -1,10 +1,10 @@
 
 .error-message {
   width: 350px;
-  height: 120px;
+  /* height: 120px; */
   padding: 0.5em 1em;
   opacity: 0;
-  z-index: 99;
+  z-index: 1000;
   /* display: none; */
   color: white;
   font-weight: 700;
@@ -29,5 +29,9 @@
   &:hover {
     background-color: rgba(222, 72, 65,.25)
   }
+}
+
+.multi-line {
+  white-space: pre-line;
 }
 

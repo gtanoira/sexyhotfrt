@@ -110,6 +110,36 @@
         <note priority="1" from="description">Close button title</note>
         <note priority="1" from="meaning">ErrorMessageModal</note>
       </trans-unit>
+      <trans-unit id="Filter-Titles" datatype="html">
+        <source>Filters:</source>
+        <target>Filters:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Filter Titles</note>
+        <note priority="1" from="meaning">Import Grids</note>
+      </trans-unit>
+      <trans-unit id="Filter-Channel" datatype="html">
+        <source>Channel</source>
+        <target>Channel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">Filter for channels</note>
+        <note priority="1" from="meaning">Import Grids</note>
+      </trans-unit>
+      <trans-unit id="Filter-All-Channels" datatype="html">
+        <source>All channels</source>
+        <target>All channels</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Filter for channles</note>
+        <note priority="1" from="meaning">Channel Option</note>
+      </trans-unit>
       <trans-unit id="No-Data" datatype="html">
         <source>No data to show</source>
         <target>No data to show</target>
