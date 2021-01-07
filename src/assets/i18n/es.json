@@ -4,7 +4,8 @@
     "WAIT-LOGGING-IN": "Espere, iniciando sesión ..."
   },
   "importBatchs": {
-    "TITLE": "Importación de Grillas (lotes)"
+    "TITLE": "Importación de Grillas (lotes)",
+    "DELETE_CONFIRMATION": "Proceso OK.\nLotes eliminados:"
   },
   "errors": {
     "GS-011": "GS-011(E): no hay nada que procesar"

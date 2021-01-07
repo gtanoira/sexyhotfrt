@@ -31,6 +31,65 @@ export class BatchsService {
     private http: HttpClient
   ) {}
 
+  // Delete a batch
+  public deleteBatch(id: number): Observable<Batch> {
+    return this.http.delete<Batch>(`${environment.sexyhotBackend}/api/batchs/${id}`);
+  }
+
+  // Select all batchs to delete
+  public filterBatchsForDeletion(id: number): boolean {
+    try {
+      // Find batchs to delete
+      const batchSelected = this.allBatchs.find(batch => batch.id === id);
+      const filteredBatchs = this.allBatchs.filter(
+        (batch) => batch.channelName === batchSelected.channelName && batch.firstEvent >= batchSelected.firstEvent
+      );
+      this.allBatchs = filteredBatchs;
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // Get all Batchs
+  public getAll(): Observable<number> {
+    return this.http.get<Batch[]>(`${environment.sexyhotBackend}/api/batchs`)
+    .pipe(
+      map(data => {
+        this.allBatchs = data;
+        return data.length;
+      })
+    );
+  }
+
+  // Get all Batchs with filters (NOT USE, keep for future use)
+  public getAllByFilter(
+    { channelName, sortField, sortDirection, pageIndex, recsPerPage }: GetAllByFilterParams
+  ): void {
+    let qParams = '';
+    if (channelName && channelName !== '') {
+      qParams = qParams + (qParams !== '' ? '&' : '') + `channel_name=${channelName}`;
+    }
+    if (sortField && sortField !== '') {
+      qParams = qParams + (qParams !== '' ? '&' : '') + `sort_field=${sortField}`;
+    }
+    if (sortDirection && sortDirection !== '') {
+      qParams = qParams + (qParams !== '' ? '&' : '') + `sort_direction=${sortDirection}`;
+    }
+    if (pageIndex) {
+      qParams = qParams + (qParams !== '' ? '&' : '') + `page_no=${pageIndex <= 0 ? 1 : pageIndex}`;
+    }
+    if (recsPerPage) {
+      qParams = qParams + (qParams !== '' ? '&' : '') + `recs_page=${recsPerPage <= 0 ? 100 : recsPerPage}`;
+    }
+    this.http.get<Batch[]>(`${environment.sexyhotBackend}/api/batchs?${qParams}`)
+    .pipe(
+      map(data => {
+        this.allBatchs = data;
+      })
+    );
+  }
+
   // Get all Batchs
   public getPage(
     request: PageRequest<Batch>,
@@ -86,41 +145,6 @@ export class BatchsService {
       };
       return of(page);
     }
-  }
-
-  // Get all Batchs
-  public getAll(): Observable<number> {
-    return this.http.get<Batch[]>(`${environment.sexyhotBackend}/api/batchs`)
-    .pipe(
-      map(data => {
-        this.allBatchs = data;
-        return data.length;
-      })
-    );
-  }
-
-  // Get all Batchs with filters (NOT USE, keep for future use)
-  public getAllByFilter(
-    { channelName, sortField, sortDirection, pageIndex, recsPerPage }: GetAllByFilterParams
-  ): void {
-    let qParams = '';
-    if (channelName && channelName !== '') {
-      qParams = qParams + (qParams !== '' ? '&' : '') + `channel_name=${channelName}`;
-    }
-    if (sortField && sortField !== '') {
-      qParams = qParams + (qParams !== '' ? '&' : '') + `sort_field=${sortField}`;
-    }
-    if (sortDirection && sortDirection !== '') {
-      qParams = qParams + (qParams !== '' ? '&' : '') + `sort_direction=${sortDirection}`;
-    }
-    if (pageIndex) {
-      qParams = qParams + (qParams !== '' ? '&' : '') + `page_no=${pageIndex <= 0 ? 1 : pageIndex}`;
-    }
-    if (recsPerPage) {
-      qParams = qParams + (qParams !== '' ? '&' : '') + `recs_page=${recsPerPage <= 0 ? 100 : recsPerPage}`;
-    }
-    this.http.get<Batch[]>(`${environment.sexyhotBackend}/api/batchs?${qParams}`)
-    .subscribe(data => this.allBatchs = data);
   }
 
   // Get the total batchs in the DBase

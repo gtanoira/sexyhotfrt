@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { takeWhile } from 'rxjs/operators';
 
 // Services
+import { AuthenticationService } from '../core/authentication.service';
 import { BatchQuery, BatchsService } from '../shared/batchs.service';
 import { ChannelsService } from '../shared/channels.service';
 import { MessagesService } from '../core/messages.service';
@@ -44,7 +45,11 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
   // Filters
   public channelOptions: Channel[] = [];
 
+  // Variables for Delete Process
+  public deleteProcess = false;  // [y,n] the delete process is activated
+
   constructor(
+    private auths: AuthenticationService,
     private batchsService: BatchsService,
     private channelsService: ChannelsService,
     private messagesService: MessagesService,
@@ -64,6 +69,12 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
     this.channelsService.getAll().subscribe(
       channels => this.channelOptions = channels
     );
+
+    // Add button DELETE if the user has the role
+    if (this.auths.hasRole('editor')) {
+      this.columnsToDisplay.push('btnDelete');
+    }
+
   }
 
   ngAfterViewInit(): void {
@@ -104,5 +115,84 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
     } else {
       this.batchsTable.queryBy({search: ''});
     }
+  }
+
+  // Delete a Batch
+  public deleteBatch(id: number): void {
+
+    // Find the batchs to delete
+    if (this.batchsService.filterBatchsForDeletion(id)) {
+
+      this.deleteProcess = true;  // activate delete process
+
+      // Add column forDeletion and delete btnDelete
+      this.columnsToDisplay.pop();
+      this.columnsToDisplay.push('forDeletion');
+
+      // Print them on the screen
+      this.batchsTable.sortBy({property: 'firstEvent', order: 'desc'});
+      this.batchsTable.fetch(0);
+    }
+  }
+
+  // Cancel de process of batchs deletion
+  public cancelDelete(): void {
+    // Fetch all the batchs
+    this.batchsService.getAll().subscribe(
+      () => {
+        // Add column btnDelete and delete forDeletion
+        this.columnsToDisplay.pop();
+        this.columnsToDisplay.push('btnDelete');
+
+        // Print them on the screen
+        this.batchsTable.sortBy({property: 'createdAt', order: 'desc'});
+        this.batchsTable.fetch(0);
+
+        this.deleteProcess = false;  // Cancel delete process
+      }
+    );
+  }
+
+  // Confirm the batchs deletion
+  public confirmDelete(): void {
+    // Sort Ascending
+    const filteredBatchs = this.batchsService.allBatchs.sort((a, b) => {
+      if (a.firstEvent > b.firstEvent) {
+        return 1;
+      }
+      if (a.firstEvent < b.firstEvent) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+
+    // Delete batchs
+    let deletedBatchs = 0;
+    for (let index = 0; index < filteredBatchs.length; index++) {
+      const batch = filteredBatchs[index];
+      this.batchsService.deleteBatch(batch.id).subscribe(
+        () => { deletedBatchs += 1; },
+        () => { index = filteredBatchs.length; }
+      );
+    }
+    // Print a message
+    this.translate.get('importBatchs.DELETE_CONFIRMATION').subscribe( text => {
+      this.messagesService.changeErrorMessage(`${text} ${deletedBatchs}`);
+    });
+    // Fetch all the batchs
+    this.batchsService.getAll().subscribe(
+      () => {
+        // Add column btnDelete and delete forDeletion
+        this.columnsToDisplay.pop();
+        this.columnsToDisplay.push('btnDelete');
+
+        // Print them on the screen
+        this.batchsTable.sortBy({property: 'createdAt', order: 'desc'});
+        this.batchsTable.fetch(0);
+
+        this.deleteProcess = false;  // Cancel delete process
+      }
+    );
   }
 }

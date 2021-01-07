@@ -21,6 +21,29 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <!-- Delete Button -->
+    <ng-container *ngIf="deleteProcess">
+      <button
+        mat-raised-button
+        (click)="confirmDelete()"
+        color="accent"
+        class="filter-btn"
+        i18n="Import Grids|Filter Confirm Deletion of batchs@@Filter-Btn-Delete"
+      >Confirm Delete
+      </button>
+    </ng-container>
+    <!-- Cancel Delete Process -->
+    <ng-container *ngIf="deleteProcess">
+      <button
+        mat-raised-button
+        (click)="cancelDelete()"
+        color="primary"
+        class="filter-btn"
+        i18n="Import Grids|Filter Cancel Deletion of batchs@@Filter-Btn-Cancel"
+      >Cancel Delete
+      </button>
+    </ng-container>
   </div>
 
   <!-- Batchs Table -->
@@ -75,6 +98,41 @@
         i18n="Batchs Table|@@column_createdAt"
         > Created </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.createdAt | date: 'y, MMM d, H:mm:ss z'}} </mat-cell>
+      </ng-container>
+
+      <!-- Delete Button -->
+      <ng-container matColumnDef="btnDelete">
+        <mat-header-cell
+          *matHeaderCellDef
+          i18n="Batchs Table|@@header_btnDelete"
+        > Actions
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="deleteBatch(element.id)"
+            i18n="Batchs Table|Text on boton Delete for each row@@row_btnDelete"
+          >Delete
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Display Mark for deletion -->
+      <ng-container matColumnDef="forDeletion">
+        <mat-header-cell
+          *matHeaderCellDef
+          i18n="Batchs Table|@@header_markForDeletion"
+        > Actions
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button
+            mat-flat-button
+            class="text-deletion"
+            i18n="Batchs Table|@@row_markForDeletion"
+          >mark for deletion
+          </button>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>

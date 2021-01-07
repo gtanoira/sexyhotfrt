@@ -1,6 +1,6 @@
 import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscriber, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 // Models
 import { User } from '../models/user.model';
@@ -17,11 +17,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomePageComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   // Variables
-  public currentUser: User;
   public programTitle = '';
+  public userName = '';
 
-  // Subscriptions
+  // Suscriptions
   private currentProgram: Subscription;  // to obtain the title of the program currently running
+  private currentUser: Subscription;
 
   // For responsiveness
   public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -36,7 +37,7 @@ export class HomePageComponent implements OnInit, AfterViewChecked, OnDestroy {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private authenticationService: AuthenticationService,
+    public readonly authenticationService: AuthenticationService,
     private breakpointObserver: BreakpointObserver,
     public messagesService: MessagesService
   ) {
@@ -47,10 +48,14 @@ export class HomePageComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Get the user info
-    this.currentUser = this.authenticationService.currentUser;
     // ProgramTitle
     this.messagesService.changeProgramTitle('Home Page');
+    // Subscribe to the user info
+    this.currentUser = this.authenticationService.currentUserSubject.subscribe(
+      userData => {
+        this.userName = userData.userName;
+      }
+    );
   }
 
   ngAfterViewChecked(): void {
@@ -62,6 +67,7 @@ export class HomePageComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentProgram.unsubscribe();
+    this.currentUser.unsubscribe();
   }
 
   public prueba(): void {

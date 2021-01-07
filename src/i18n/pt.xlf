@@ -140,15 +140,25 @@
         <note priority="1" from="description">Filter for channles</note>
         <note priority="1" from="meaning">Channel Option</note>
       </trans-unit>
-      <trans-unit id="No-Data" datatype="html">
-        <source>No data to show</source>
-        <target>Sem dados para mostrar</target>
+      <trans-unit id="Filter-Btn-Delete" datatype="html">
+        <source>Confirm Delete </source>
+        <target>Confirmar Remover </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">32,33</context>
         </context-group>
-        <note priority="1" from="description">Generic</note>
-        <note priority="1" from="meaning">Generic</note>
+        <note priority="1" from="description">Filter Confirm Deletion of batchs</note>
+        <note priority="1" from="meaning">Import Grids</note>
+      </trans-unit>
+      <trans-unit id="Filter-Btn-Cancel" datatype="html">
+        <source>Cancel Delete </source>
+        <target>Cancelar Remover </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+        <note priority="1" from="description">Filter Cancel Deletion of batchs</note>
+        <note priority="1" from="meaning">Import Grids</note>
       </trans-unit>
       <trans-unit id="column_channelName" datatype="html">
         <source> Channel Name </source>
@@ -192,6 +202,43 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
           <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="meaning">Batchs Table</note>
+      </trans-unit>
+      <trans-unit id="header_btnDelete" datatype="html">
+        <source> Actions </source>
+        <target> Ações </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">106,107</context>
+        </context-group>
+        <note priority="1" from="meaning">Batchs Table</note>
+      </trans-unit>
+      <trans-unit id="row_btnDelete" datatype="html">
+        <source>Delete </source>
+        <target>Remover </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">114,115</context>
+        </context-group>
+        <note priority="1" from="description">Text on boton Delete for each row</note>
+        <note priority="1" from="meaning">Batchs Table</note>
+      </trans-unit>
+      <trans-unit id="header_markForDeletion" datatype="html">
+        <source> Actions </source>
+        <target> Ações </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">124,125</context>
+        </context-group>
+        <note priority="1" from="meaning">Batchs Table</note>
+      </trans-unit>
+      <trans-unit id="row_markForDeletion" datatype="html">
+        <source>mark for deletion </source>
+        <target>marcado para remover </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/import-batchs/import-batchs.component.html</context>
+          <context context-type="linenumber">131,132</context>
         </context-group>
         <note priority="1" from="meaning">Batchs Table</note>
       </trans-unit>

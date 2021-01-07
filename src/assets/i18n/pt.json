@@ -4,7 +4,8 @@
     "WAIT-LOGGING-IN": "Espere, entrando ... "
   },
   "importBatchs": {
-    "TITLE": "Importação de Grade (lotes)"
+    "TITLE": "Importação de Grade (lotes)",
+    "DELETE_CONFIRMATION": "Processo OK.\nLotes removidos:"
   },
   "errors": {
     "GS-011": "GS-011(E): não há nada para processar"
