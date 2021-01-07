@@ -2,7 +2,7 @@
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MessagesService {
 
   // Error messages
@@ -15,12 +15,16 @@ export class MessagesService {
   private _programTitleSubject = new BehaviorSubject('');
   public programTitle = this._programTitleSubject.asObservable();
 
+  // Type of message: alert or info
+  public typeOfMessage = 'alert';
+
   constructor(
     @Inject(LOCALE_ID) protected localeId: string
   ) {}
 
   // Emit an error message to the screen
-  public changeErrorMessage(message: string): void {
+  public changeErrorMessage(message: string, type: string = 'alert'): void {
+    this.typeOfMessage = type;
     this._errorMessageSubject.next(message);
   }
 

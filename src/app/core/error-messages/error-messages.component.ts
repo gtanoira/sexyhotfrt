@@ -25,6 +25,7 @@ export class ErrorMessagesComponent implements OnInit, OnDestroy {
   // Variables
   private displayError: Subscription;  // Observable to hear, for new error messages to print
   public errorMessage = '';  // error to show in the screen
+  public messageTypeClass = 'error-message--alert';
   public state = 'disappear';  // state for the animation of the error
 
   constructor(
@@ -33,6 +34,9 @@ export class ErrorMessagesComponent implements OnInit, OnDestroy {
     // Subscribe to the error message service, to print errors on the screen
     this.displayError = this.messagesService.errorMessage.subscribe(
       message => {
+        this.messageTypeClass = `error-message--${messagesService.typeOfMessage}`;
+        console.log('** class:', this.messageTypeClass);
+
         this.errorMessage = message;
         this.state = message === '' ? 'disappear' : 'appear';
       }

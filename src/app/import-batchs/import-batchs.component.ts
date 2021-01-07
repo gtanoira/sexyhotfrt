@@ -178,7 +178,7 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
     }
     // Print a message
     this.translate.get('importBatchs.DELETE_CONFIRMATION').subscribe( text => {
-      this.messagesService.changeErrorMessage(`${text} ${deletedBatchs}`);
+      this.messagesService.changeErrorMessage(`${text} ${deletedBatchs}`, 'info');
     });
     // Fetch all the batchs
     this.batchsService.getAll().subscribe(

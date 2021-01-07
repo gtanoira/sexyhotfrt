@@ -6,11 +6,20 @@
   opacity: 0;
   z-index: 1000;
   /* display: none; */
-  color: white;
   font-weight: 700;
-  background-color:rgba(222, 72, 65,.75);
-  border: 1px solid rgb(222, 72, 65);
   border-radius: 8px;
+
+  &--alert {
+    color: white;
+    background-color:rgba(222, 72, 65,.75);
+    border: 1px solid rgb(222, 72, 65);
+  }
+
+  &--info {
+    color: white;
+    background-color:rgba(50, 201, 45, 0.749);
+    border: 1px solid rgb(50, 201, 45);
+  }
 }
 
 .container {
