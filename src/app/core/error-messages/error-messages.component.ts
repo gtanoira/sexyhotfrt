@@ -35,8 +35,6 @@ export class ErrorMessagesComponent implements OnInit, OnDestroy {
     this.displayError = this.messagesService.errorMessage.subscribe(
       message => {
         this.messageTypeClass = `error-message--${messagesService.typeOfMessage}`;
-        console.log('** class:', this.messageTypeClass);
-
         this.errorMessage = message;
         this.state = message === '' ? 'disappear' : 'appear';
       }

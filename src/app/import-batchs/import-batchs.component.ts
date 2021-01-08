@@ -1,8 +1,10 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSelectChange } from '@angular/material/select';
+import { Sort } from '@angular/material/sort';
 import { TranslateService } from '@ngx-translate/core';
-import { takeWhile } from 'rxjs/operators';
+import { concat, from, throwError } from 'rxjs';
+import { catchError, concatMap, finalize, map, takeWhile, tap } from 'rxjs/operators';
 
 // Services
 import { AuthenticationService } from '../core/authentication.service';
@@ -13,7 +15,6 @@ import { PaginatedDataSource } from '../shared/datasource/datasource.component';
 // Models
 import { Batch } from '../models/batch.model';
 import { Channel } from '../models/channel.model';
-import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-import-batchs',
@@ -110,7 +111,6 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
   public changeFilterChannel(channelEvent: MatSelectChange): void {
     if (channelEvent.value) {
       const query = { search: this.channelOptions[channelEvent.value - 1].name };
-      console.log('*** query:', query);
       this.batchsTable.queryBy(query);
     } else {
       this.batchsTable.queryBy({search: ''});
@@ -155,43 +155,67 @@ export class ImportBatchsComponent implements OnInit, AfterViewInit {
 
   // Confirm the batchs deletion
   public confirmDelete(): void {
-    // Sort Ascending
+    // Sort batchs in descending order by firstEvent field
     const filteredBatchs = this.batchsService.allBatchs.sort((a, b) => {
       if (a.firstEvent > b.firstEvent) {
-        return 1;
+        return -1;
       }
       if (a.firstEvent < b.firstEvent) {
-        return -1;
+        return 1;
       }
       // a must be equal to b
       return 0;
     });
 
-    // Delete batchs
-    let deletedBatchs = 0;
-    for (let index = 0; index < filteredBatchs.length; index++) {
-      const batch = filteredBatchs[index];
-      this.batchsService.deleteBatch(batch.id).subscribe(
-        () => { deletedBatchs += 1; },
-        () => { index = filteredBatchs.length; }
+    // Delete batchs, if one fails the process stops
+    let rtnMsg = '';
+    const batchs = from(filteredBatchs);
+    const batchsToDelete = batchs
+      .pipe(
+        concatMap(
+          data => {
+            const id = data.id;
+            return this.batchsService.deleteBatch(id).pipe(
+              // tslint:disable-next-line: no-string-literal
+              map(msg => rtnMsg = `${rtnMsg}\n${msg['message']}`),
+              catchError(error => {
+                rtnMsg = `${rtnMsg}\n${error.error.message} (${error.error.statusCode})`;
+                throw(rtnMsg);
+              })
+            );
+          }
+        )
       );
-    }
-    // Print a message
-    this.translate.get('importBatchs.DELETE_CONFIRMATION').subscribe( text => {
-      this.messagesService.changeErrorMessage(`${text} ${deletedBatchs}`, 'info');
-    });
-    // Fetch all the batchs
-    this.batchsService.getAll().subscribe(
-      () => {
-        // Add column btnDelete and delete forDeletion
-        this.columnsToDisplay.pop();
-        this.columnsToDisplay.push('btnDelete');
 
-        // Print them on the screen
-        this.batchsTable.sortBy({property: 'createdAt', order: 'desc'});
-        this.batchsTable.fetch(0);
+    batchsToDelete.pipe(
+      tap(data => {
+        // Print the result
+        this.messagesService.changeErrorMessage(data, 'info');
+      }),
+      catchError(error => {
+        // Print the result
+        this.messagesService.changeErrorMessage(error, 'info');
+        return '';
+      }),
+      finalize(() => {
+        return '';
+      })
+    ).subscribe(
+      data => {
+        // Fetch all the batchs and restore the screen
+        this.batchsService.getAll().subscribe(
+          () => {
+            // Add column btnDelete and delete forDeletion
+            this.columnsToDisplay.pop();
+            this.columnsToDisplay.push('btnDelete');
 
-        this.deleteProcess = false;  // Cancel delete process
+            // Print them on the screen
+            this.batchsTable.sortBy({property: 'createdAt', order: 'desc'});
+            this.batchsTable.fetch(0);
+
+            this.deleteProcess = false;  // Cancel delete process
+          }
+        );
       }
     );
   }

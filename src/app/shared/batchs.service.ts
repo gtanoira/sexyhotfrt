@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { delay, map, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, delay, map, tap } from 'rxjs/operators';
 
 // Environment
 import { environment } from 'src/environments/environment';
@@ -32,7 +32,7 @@ export class BatchsService {
   ) {}
 
   // Delete a batch
-  public deleteBatch(id: number): Observable<Batch> {
+  public deleteBatch(id: number): Observable<{[key: string]: any}> {
     return this.http.delete<Batch>(`${environment.sexyhotBackend}/api/batchs/${id}`);
   }
 
